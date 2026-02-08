@@ -1,0 +1,16 @@
+.all-cards {
+  display: flex;
+  gap: 20px; /* רווח בין הכרטיסים */
+  justify-content: center;
+  flex-wrap: wrap; /* שירדו שורה אם אין מקום */
+}
+
+.id-card-container {
+  border: 2px solid #ddd;
+  padding: 15px;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 200px;
+  text-align: center;
+}

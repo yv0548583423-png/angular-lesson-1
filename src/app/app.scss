@@ -1,0 +1,16 @@
+/* עיצוב לכותרת */
+h1 {
+  color: #02274c;
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 20px;
+}
+
+/* עיצוב לפסקה */
+p {
+  color: #220b7d;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  padding: 0 20px;
+  direction: rtl; /* יישור לימין אם הטקסט בעברית */
+}
