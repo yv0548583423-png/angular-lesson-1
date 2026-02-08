@@ -1,12 +1,16 @@
-<div class="all-cards">
-  @for (person of people; track person.idNumber) {
-    <div class="id-card-container">
-      <img [src]="person.imageName" [alt]="person.firstName" style="width: 100px;">
-      <h3>{{ person.firstName }} {{ person.lastName }}</h3>
-      <p>ת.ז: {{ person.idNumber }}</p>
-      <p>ילדים: {{ person.numberOfChildren }}</p>
-      <p>תאריך לידה: {{ person.birthDate | date:'dd/MM/yyyy' }}</p>
-      <p>אזרחות: {{ person.isIsraeli ? 'ישראלית' : 'חוץ' }}</p>
-    </div>
-  }
+<div class="id-card-container">
+  <img [src]="imageName" [hidden]="isImageHidden" alt="profile" width="100" height="100">
+  
+  <div class="info">
+    <span class="data-row"><strong>שם:</strong> {{ firstName }} {{ lastName }}</span>
+    <span class="data-row"><strong>ת.ז:</strong> {{ idNumber }}</span>
+    <span class="data-row"><strong>ילדים:</strong> {{ numberOfChildren }}</span>
+    <span class="data-row"><strong>תאריך לידה:</strong> {{ birthDate | date:'dd/MM/yyyy' }}</span>
+    <span class="data-row"><strong>גיל:</strong> {{ getAge() }}</span>
+    <span class="data-row"><strong>אזרחות:</strong> {{ isIsraeli ? 'ישראלי' : 'זר' }}</span>
+  </div>
+
+  <button (click)="toggleImage()">
+    {{ isImageHidden ? 'הצג תמונה' : 'הסתר תמונה' }}
+  </button>
 </div>

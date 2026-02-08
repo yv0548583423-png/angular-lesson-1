@@ -1,3 +1,21 @@
 <h1>Welcome to Angular Lesson 1</h1>
 <p>השיעורי בית  הראשונים שלי</p>
-<app-id-card></app-id-card>
+<div style="display: flex; justify-content: space-around;">
+  <app-id-card 
+    [firstName]="'רחלי'" [lastName]="'כהן'" [idNumber]="'123'" 
+    [numberOfChildren]="3" [birthDate]="people[0].birthDate" 
+    [imageName]="'person1.jpg'">
+  </app-id-card>
+
+  <app-id-card 
+    [firstName]="'שירה'" [lastName]="'לוי'" [idNumber]="'456'" 
+    [numberOfChildren]="2" [birthDate]="people[1].birthDate" 
+    [imageName]="'person2.jpg'">
+  </app-id-card>
+
+  <app-id-card 
+    [firstName]="'יונתן'" [lastName]="'דיין'" [idNumber]="'789'" 
+    [numberOfChildren]="0" [birthDate]="people[2].birthDate" 
+    [imageName]="'person3.jpg'">
+  </app-id-card>
+</div>

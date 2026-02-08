@@ -1,40 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-id-card',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './id-card.html',
-  styleUrl: './id-card.scss',
+  styles: [`
+    .id-card-container {
+      border: 2px solid #333;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 8px;
+      width: 250px;
+      display: inline-block;
+      vertical-align: top;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    img { border-radius: 50%; margin-bottom: 10px; }
+    .data-row { display: block; margin-bottom: 5px; }
+  `]
 })
 export class IdCard {
-  people=[
-    {
-      firstName: 'רחלי',
-      lastName: 'כהן',
-      idNumber: '123456789',
-      numberOfChildren: 3,
-      birthDate: new Date(1995, 4, 15),
-      isIsraeli: true,
-      imageName: 'person1.jpg'
-    },
-    {
-      firstName: 'שירה',
-      lastName: 'לוי',
-      idNumber: '987654321',
-      numberOfChildren: 2,
-      birthDate: new Date(1998, 10, 20),
-      isIsraeli: true,
-      imageName: 'person2.jpg'
-    },
-    {
-      firstName: 'יונתן',
-      lastName: 'דיין',
-      idNumber: '456123789',
-      numberOfChildren: 0,
-      birthDate: new Date(2000, 1, 5),
-      isIsraeli: false,
-      imageName: 'person3.jpg'
+  @Input() firstName: string = '';
+  @Input() lastName: string = '';
+  @Input() idNumber: string = '';
+  @Input() numberOfChildren: number = 0;
+  @Input() birthDate: Date = new Date();
+  @Input() isIsraeli: boolean = true;
+  @Input() imageName: string = '';
+
+  isImageHidden: boolean = false;
+
+  getAge(): number {
+    const today = new Date();
+    let age = today.getFullYear() - this.birthDate.getFullYear();
+    const m = today.getMonth() - this.birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < this.birthDate.getDate())) {
+      age--;
     }
-  ];
+    return age;
+  }
+
+  toggleImage(): void {
+    this.isImageHidden = !this.isImageHidden;
+  }
 }
